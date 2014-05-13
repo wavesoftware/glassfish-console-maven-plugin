@@ -23,6 +23,8 @@
  */
 package pl.wavesoftware.maven.plugin.glassfish.console;
 
+import java.io.File;
+import java.net.URL;
 import org.apache.maven.plugin.testing.stubs.MavenProjectStub;
 import org.apache.maven.project.MavenProject;
 
@@ -33,7 +35,10 @@ import org.apache.maven.project.MavenProject;
 public class ProjectStub extends MavenProjectStub {
 
     public ProjectStub() {
-        setExecutionRoot(true);
+        super();
+        URL fileUrl = this.getClass().getResource("test-pom.xml");
+        File pom = new File(fileUrl.getFile());
+        readModel(pom);
     }
 
     @Override

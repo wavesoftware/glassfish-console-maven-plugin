@@ -4,7 +4,7 @@
     <security>
         <realm>
             <name>JDBC_myproject</name>
-            <class>com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm</class>
+            <class>com.sun.enterprise.security.ee.auth.realm.jdbc.JDBCRealm</class>
             <jaas-context>jdbcRealm</jaas-context>
             <datasource-jndi>jdbc/MyProject</datasource-jndi>
             <user-table>users</user-table>

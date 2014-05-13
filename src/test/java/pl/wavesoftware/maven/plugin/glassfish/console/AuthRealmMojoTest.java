@@ -33,8 +33,6 @@ import org.apache.maven.plugin.testing.MojoRule;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.ExecTask;
 import static org.assertj.core.api.Assertions.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
@@ -48,21 +46,25 @@ public class AuthRealmMojoTest {
     private Path root;
 
     @Rule
-    public MojoRule mojoRule = new MojoRule();
+    public transient MojoRule mojoRule = new MojoRule() {
 
-    @Before
-    public void before() {
-        ExecTask task = getAsAdminExecutable();
-        task.createArg().setLine("start-domain");
-        task.execute();
-    }
+        @Override
+        protected void before() throws Throwable {
+            super.before();
+            ExecTask task = getAsAdminExecutable();
+            task.createArg().setLine("start-domain");
+            task.execute();
+        }
 
-    @After
-    public void after() {
-        ExecTask task = getAsAdminExecutable();
-        task.createArg().setLine("stop-domain");
-        task.execute();
-    }
+        @Override
+        protected void after() {
+            super.after();
+            ExecTask task = getAsAdminExecutable();
+            task.createArg().setLine("stop-domain");
+            task.execute();
+        }
+
+    };
 
     private ExecTask getAsAdminExecutable() {
         ExecTask execTask = new ExecTask();
@@ -71,8 +73,8 @@ public class AuthRealmMojoTest {
         project.setBaseDir(base.toFile());
         execTask.setProject(project);
         Path asadmin = base.resolve("target")
-            .resolve("glassfish-3.1.2.2")
-            .resolve("glassfish3")
+            .resolve("glassfish-4.0")
+            .resolve("glassfish4")
             .resolve("bin")
             .resolve("asadmin");
         execTask.setExecutable(asadmin.toString());
@@ -86,8 +88,8 @@ public class AuthRealmMojoTest {
     private Path getBasedir() {
         if (root == null) {
             String separator = System.getProperty("file.separator");
-            String pack = AuthRealmMojoTest.class.getPackage().getName().replace(".", separator);
-            URL thisDir = AuthRealmMojoTest.class.getResource(".");
+            String pack = this.getClass().getPackage().getName().replace(".", separator);
+            URL thisDir = this.getClass().getResource(".");
             String path = thisDir.getPath();
             String rootStr = path.replace(getMavenTestClasses() + separator, "")
                 .replace(pack + separator, "");

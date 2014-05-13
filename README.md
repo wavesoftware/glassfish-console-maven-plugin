@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/wavesoftware/plugin-glassfish-console.png)](http://travis-ci.org/wavesoftware/plugin-glassfish-console)
+[![Build Status](https://secure.travis-ci.org/wavesoftware/glassfish-console-maven-plugin.png)](http://travis-ci.org/wavesoftware/glassfish-console-maven-plugin)
 
 Introduction
 ------------
@@ -43,7 +43,7 @@ Example usage:
 ```xml
 <plugin>
     <groupId>pl.wavesoftware.maven</groupId>
-    <artifactId>plugin-glassfish-console</artifactId>
+    <artifactId>glassfish-console-maven-plugin</artifactId>
     <version>0.1.0</version>
     <executions>
         <execution>
@@ -55,7 +55,7 @@ Example usage:
                 <action>AUTO</action>
                 <recreateOnAutoMode>true</recreateOnAutoMode>
                 <type>JDBC</type>
-                <installDir>${project.build.directory}/glassfish-3.1.2.2/glassfish3</installDir>
+                <installDir>${project.build.directory}/glassfish-4.0/glassfish4</installDir>
                 <propertiesFile>${basedir}/src/main/setup/glassfish-console.xml</propertiesFile>
                 <properties>
                     <digest-algorithm>MD5</digest-algorithm>
@@ -79,10 +79,10 @@ Example usage:
                     <artifactItem>
                         <groupId>org.glassfish.main.distributions</groupId>
                         <artifactId>glassfish</artifactId>
-                        <version>3.1.2.2</version>
+                        <version>4.0</version>
                         <type>zip</type>
                         <overWrite>false</overWrite>
-                        <outputDirectory>${project.build.directory}/glassfish-3.1.2.2</outputDirectory>
+                        <outputDirectory>${project.build.directory}/glassfish-4.0</outputDirectory>
                     </artifactItem>
                 </artifactItems>
             </configuration>
