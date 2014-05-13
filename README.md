@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/wavesoftware/glassfish-console-maven-plugin.svg)](http://travis-ci.org/wavesoftware/glassfish-console-maven-plugin) [![Coverage Status](https://img.shields.io/coveralls/wavesoftware/glassfish-console-maven-plugin.svg)](https://coveralls.io/r/wavesoftware/glassfish-console-maven-plugin)
+[![Build Status](https://secure.travis-ci.org/wavesoftware/glassfish-console-maven-plugin.png)](http://travis-ci.org/wavesoftware/glassfish-console-maven-plugin) [![Coverage Status](https://coveralls.io/repos/wavesoftware/glassfish-console-maven-plugin/badge.png)](https://coveralls.io/r/wavesoftware/glassfish-console-maven-plugin)
 
 Introduction
 ------------
