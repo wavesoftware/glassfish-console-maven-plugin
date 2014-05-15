@@ -85,6 +85,7 @@ public class AntBuildListener implements BuildListener {
         String message = getMessage(event);
         if (isStringEmpty(message) && throwable != null) {
             message = throwable.getLocalizedMessage();
+            priority = Project.MSG_ERR;
         }
         switch (priority) {
             case Project.MSG_DEBUG:
@@ -152,13 +153,7 @@ public class AntBuildListener implements BuildListener {
             T value = (T) field.get(auth);
             field.setAccessible(false);
             return value;
-        } catch (NoSuchFieldException ex) {
-            throw new IllegalStateException(ex);
-        } catch (SecurityException ex) {
-            throw new IllegalStateException(ex);
-        } catch (IllegalArgumentException ex) {
-            throw new IllegalStateException(ex);
-        } catch (IllegalAccessException ex) {
+        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex) {
             throw new IllegalStateException(ex);
         }
     }
